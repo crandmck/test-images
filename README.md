@@ -6,4 +6,6 @@ This image, `pickleball.jpg` was licensed and downloaded from Adobe Stock, then 
 
 !["pickleball"](pickleball.jpg)
 
+!["Stock image"](/AdobeStock_623162598.jpeg)
+
 

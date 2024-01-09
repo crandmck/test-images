@@ -2,24 +2,29 @@
 <html>
 <head>
   <title>Simple demo of linking to Verify</title>
+  <script>
+    window.addEventListener('load', function() {
+      var images = document.getElementsByTagName('img');
+      for (var i = 0; i < images.length; i++) {
+        images[i].onclick = function() {
+          window.open('https://contentcredentials.org/verify?source=' + this.src, '_blank');
+        };
+      }
+    });
+  </script>
 </head>
-<script>
-  function gotoVerify(theImage) {
-    console.log("Link = " + "https://contentcredentials.org/verify?source=" + theImage.src );
-    window.open("https://contentcredentials.org/verify?source=" + theImage.src , "_blank");
-  }
-</script>
+
 <body>
   <p>Click the image to inspect content credentials using Verify.</p>
 
   <a href="#">
-    <img src="pickleball.jpg" alt="Pickleball Image" style="width: 600px;" onclick="window.open('https://contentcredentials.org/verify?source=' + this.src , '_blank');">
+    <img src="pickleball.jpg" alt="Pickleball Image" style="width: 600px;">
   </a>
 
   <br/>
 
   <a href="#">
-    <img src="AdobeStock_623162598.jpeg" alt="Stock image" style="width: 600px;" onclick="window.open('https://contentcredentials.org/verify?source=' + this.src , '_blank');">
+    <img src="AdobeStock_623162598.jpeg" alt="Stock image" style="width: 600px;">
   </a>
 
 

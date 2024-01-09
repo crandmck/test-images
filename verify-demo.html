@@ -10,6 +10,10 @@
           images[i].onclick = function() {
             window.open('https://contentcredentials.org/verify?source=' + this.src, '_blank');
           };
+        } else {
+          images[i].onclick = function() {
+            alert('No Content Credentials indicated for this image.');
+          };
         }
       }
     });

@@ -1,8 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Simple demo of linking to Verify</title>
+  <title>No code demo of linking to Verify</title>
   <script>
+    window.addEventListener('load', function() {
+      var images = document.getElementsByTagName('img');
+      for (var i = 0; i < images.length; i++) {
+        if (images[i].hasAttribute('credentials')) {
+          images[i].onclick = function() {
+            window.open('https://contentcredentials.org/verify?source=' + this.src, '_blank');
+          };
+        }
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <h1>No code demo of linking to Verify</h1>
+
+  <p>If you have images that have Content Credentials, for example ones you saved using Photoshop with Content Credentials (Beta) enabled or created with Adobe Firefly, this is the <i>simplest possible way</i> to link them to <a href="https://contentcredentials.org/verify">Verify</a> to display the Content Credentials.</p>
+  
+
+  <p>Simply add this code in the head of your page:</p>
+  <pre>
     window.addEventListener('load', function() {
       var images = document.getElementsByTagName('img');
       for (var i = 0; i < images.length; i++) {
@@ -11,23 +32,38 @@
         };
       }
     });
-  </script>
-</head>
+  </pre>
 
-<body>
-  <h1>No code demo of linking to Verify</h1>
-  <p>Click the image to inspect content credentials using Verify.</p>
+  <p>If you want to indicate whether an image has Content Credentials, you could, for example, simply add a <b>credentials</b> attribute to the img tags for the image, then check for the existence of that attribute: </p>
 
-  <a href="#">
-    <img src="pickleball.jpg" alt="Pickleball Image" style="width: 600px;">
-  </a>
+  <pre>
+  window.addEventListener('load', function() {
+    var images = document.getElementsByTagName('img');
+    for (var i = 0; i < images.length; i++) {
+      if (images[i].hasAttribute('credentials')) {
+        images[i].onclick = function() {
+          window.open('https://contentcredentials.org/verify?source=' + this.src, '_blank');
+        };
+      } else {
+        images[i].onclick = function() {
+          alert('No Content Credentials indicated for this image.');
+        };
+      }
+    }
+  });
+</pre>
+
+  <img src="images/pickleball.jpg" credentials alt="Pickleball Image" style="width: 600px;">
 
   <br/>
 
-  <a href="#">
-    <img src="AdobeStock_623162598.jpeg" alt="Stock image" style="width: 600px;">
-  </a>
+  <img src="images/AdobeStock_623162598.jpeg" credentials alt="Stock image" style="width: 600px;">
 
+  <br/>
+
+  <p>An image WITHOUT Content Credentials:</p>
+
+  <img src="images/car.jpeg" alt="Old wrecked car" style="width: 600px;">
 
 </body>
 </html>
